@@ -1,0 +1,123 @@
+{% extends "home-pages/home-layout.html" %}
+{% block title %} View Product - Best Shopping Website {% endblock %}
+{% block css %}
+
+<link rel="stylesheet" href="{{url_for('static', filename='css/shop-view.css')}}">
+
+{% endblock %}
+
+{% block cls %}
+<div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
+    <ul class="list-unstyled nav1 cl-effect-10">
+        <li><a data-hover="Home" href="/"><span>Home</span></a></li>
+        <li><a data-hover="Category" href="/category"><span>Category</span></a></li>
+        <li><a data-hover="Shop" class="active" href="/shop"><span>Shop</span></a></li>
+        <li><a data-hover="About" href="/about"><span>About</span></a></li>
+        <li><a data-hover="Contact Us" href="/contact"><span>contact Us</span></a></li>
+        <!-- <li><a data-hover="Search" href="/search"><span>Search <i class="fa fa-search"
+                        aria-hidden="true"></i></span></a></li> -->
+    </ul>
+
+</div>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <!-- pasted here -->
+<div class="shop-view">
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column col-md-6 col-lg-6 col-sm-12 col-xs-12">
+        <img data-image="black" src="{{url_for('static', filename='product-images//black.png')}}" alt="">
+        <img data-image="blue" src="{{url_for('static', filename='product-images/blue.png')}}" alt="">
+        <img data-image="red" class="active" src="{{url_for('static', filename='product-images/red.png')}}" alt="">
+    </div>
+
+
+    <!-- Right Column -->
+    <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+            <span>Headphones</span>
+            <h1>Beats EP</h1>
+            <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation.
+                Sturdy headband and on-ear cushions suitable for live performance</p>
+        </div>
+
+        <!-- Product Configuration -->
+        <div class="product-configuration">
+
+            <!-- Product Color -->
+            <div class="product-color">
+                <span>Images</span>
+
+                <div class="color-choose">
+                    <div>
+                        <input data-image="red" type="radio" id="red" name="color" value="red" checked>
+                        <label for="red"><span></span></label>
+                    </div>
+                    <div>
+                        <input data-image="blue" type="radio" id="blue" name="color" value="blue">
+                        <label for="blue"><span></span></label>
+                    </div>
+                    <div>
+                        <input data-image="black" type="radio" id="black" name="color" value="black">
+                        <label for="black"><span></span></label>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Cable Configuration -->
+            <div class="cable-config">
+                <span>⭐⭐⭐⭐⭐</span><br>
+                <span style="font-weight: bold;">94 Reviews</span>
+            </div>
+        </div>
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+            <span>148$</span>
+            <a href="#" class="cart-btn">Add to cart</a>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            $('.color-choose input').on('click', function () {
+                var headphonesColor = $(this).attr('data-image');
+
+                $('.active').removeClass('active');
+                $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
+                $(this).addClass('active');
+            });
+
+        });
+
+    </script>
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+{% endblock %}
+{% block footerBtn %}
+<div class="col-md-3 col-sm-6 col-xs-12 width-50 width-set-50">
+    <div class="footer-details">
+        <h4>explore</h4>
+        <ul class="list-unstyled footer-links">
+            <li><a>Home</a></li>
+            <li><a href="/category">Category</a></li>
+            <li class="active"><a href="/shop">Shop</a></li>
+            <li><a href="/about">About</a></li>
+            <li> <a href="/contact">Contact</a></li>
+            <!-- <li> <a href="/search">Search</a></li> -->
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+filter{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+select{
+    width: 130px;
+    height: 30px;
+    border: none;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #ff4157;
+    color: white;
+}
+option{
+    background-color: whitesmoke;
+    color: black;
+    border: none;
+    box-shadow: none;
+}
+.filterBtn{
+    text-decoration: dotted;
+    font-weight: bold;
+    font-size: 14px;
+    color: blue;
+
+    
+}
+

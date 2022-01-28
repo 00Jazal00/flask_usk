@@ -1,0 +1,119 @@
+{% extends "dashboard/dashboard-layout.html" %}
+{% block title %} Dashboard - Home{% endblock %}
+{% block mainBtn %} 
+                <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard-home">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard-shop-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Shop</span></a>
+            </li>
+            <!-- Nav Item - Posts -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/dashboard-posts">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Posts</span></a>
+            </li> -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/dashboard-category">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Category</span></a>
+            </li>
+            {% endblock %}
+{% block body %}
+              
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Category</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-home fa-sm text-white-50"></i> Ironign</a>
+                    </div>
+
+                   <!-- pasted Here -->
+                   <div class="limiter">
+                    <div class="container-login100" style="background-image: url_for('static', filename='dashboard/form/images/bg-01.jpg');">
+                        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                            <form class="login100-form validate-form" enctype="multipart/form-data" action = "/dashboard-category-edit/{{all_category.sno}}" method="post">
+                                <span class="login100-form-title p-b-49">
+                                    Update Category
+                                </span>
+                                <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+                                    <span class="label-input100">Category</span>
+                                    <input class="input100" type="text" name="c" placeholder="Category" required value="{{all_category.c}}">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+                                    <span class="label-input100">Sub-Category 1</span>
+                                    <input class="input100" type="text" name="c1" placeholder="Sub category 1" required value="{{all_category.c1}}">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+                                    <span class="label-input100">Sub-Category 2</span>
+                                    <input class="input100" type="text" name="c2" placeholder="Sub category 2" required value="{{all_category.c2}}">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+                                    <span class="label-input100">Sub-Category 3</span>
+                                    <input class="input100" type="text" name="c3" placeholder="Sub category 3" required value="{{all_category.c3}}">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+                                    <span class="label-input100">Sub-Category 4</span>
+                                    <input class="input100" type="text" name="c4" placeholder="Sub category 4" required value="{{all_category.c4}}">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+                                    <span class="label-input100">Sub-Category 5</span>
+                                    <input class="input100" type="text" name="c5" placeholder="Sub category 5" required value="{{all_category.c5}}">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                
+            
+                                
+                                
+                                <br>
+                                <div class="container-login100-form-btn">
+                                    <div class="wrap-login100-form-btn">
+                                        <div class="login100-form-bgbtn"></div>
+                                        <button class="login100-form-btn" type="submit">
+                                            Update Category
+                                        </button>
+                                    </div>
+                                </div>
+            
+            
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    
+    {% endblock %}

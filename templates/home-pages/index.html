@@ -1,0 +1,130 @@
+{% extends "home-pages/home-layout.html" %}
+{% block title %} Home - Best Shopping Website {% endblock %}
+{% block cls %} 
+<div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
+    <ul class="list-unstyled nav1 cl-effect-10">
+        <li><a  data-hover="Home" class="active" href="/"><span>Home</span></a></li>
+        <li><a data-hover="Category" href="/category"><span>Category</span></a></li>
+        <li><a data-hover="Shop"  href="/shop"><span>Shop</span></a></li>
+        <li><a data-hover="About" href="/about"><span>About</span></a></li>
+        <li><a data-hover="Contact Us" href="/contact"><span>contact Us</span></a></li>
+        <!-- <li><a data-hover="Search" href="/search"><span>Search <i class="fa fa-search" aria-hidden="true"></i></span></a></li> -->
+    </ul>
+
+</div>
+{% endblock %}
+{% block body %}
+
+
+            <!--end-->
+            <div id="myCarousel1" class="carousel slide" data-ride="carousel"> 
+                <!-- Indicators -->
+
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel1" data-slide-to="1"></li>
+                    <li data-target="#myCarousel1" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active"> <img src="{{url_for('static', filename= 'images/banner.png')}}" style="width:100%; height: 500px" alt="First slide">
+                        <div class="carousel-caption">
+                            <h1>vacayhome<br> spa & Resort</h1>
+                        </div>
+                    </div>
+                    <div class="item"> <img src="{{url_for('static', filename= 'images/banner2.png')}}" style="width:100%; height: 500px" alt="Second slide">
+                        <div class="carousel-caption">
+                            <h1>vacayhome<br> spa & Resort</h1>
+                        </div>
+                    </div>
+                    <div class="item"> <img src="{{url_for('static', filename= 'images/banner3.png')}}" style="width:100%; height: 500px" alt="Third slide">
+                        <div class="carousel-caption">
+                            <h1>vacayhome<br> spa & Resort</h1>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+
+            <!----resort-overview--->
+            <section class="resort-overview-block">
+                <div class="container">
+                    <div class="row">
+                        {% if all_special_category|length == 0 %}
+
+                        <div class="alert alert-dark" role="alert">
+                            No Category is avaible at the Movement !
+                        </div>
+                        {% else %}
+                        {% for special_category in all_special_category %}
+                        <div class="col-md-6 col-sm-12 col-xs-12 remove-padd-right">
+                            <div class="side-A">
+                                <div class="product-thumb">
+                                    <div class="image">
+                                        <a>
+                                            {% set fname = 'uploads/' + special_category.img %}
+                                            <img src="{{url_for('static', filename=fname)}}" class="img-responsive" alt="image"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-B">
+                                <div class="product-desc-side">
+                                    <h3><a>{{special_category.name}}</a></h3>
+                                    <p>{{special_category.desc}}</p>
+                                    <div class="links"><a href="/category_product_view/{{special_category.sno}}">Read more</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        {% endfor %}
+                        {% endif %}
+                        
+
+                    </div>
+                </div>
+            </section>
+
+            <!--offer block-->
+            <section class="vacation-offer-block">
+                <div class="vacation-offer-bgbanner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-6 col-xs-12">
+                                <div class="vacation-offer-details">
+                                    <h1>Hot Sale</h1>
+                                    <h4>Lorem ipsum dolor sit amet, conse ctetuer adipiscing elit.</h4>
+                                    <button type="button" class="btn btn-default">Go to Sale</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--End-->
+
+            
+
+            <!-----blog slider----->
+            <!--blog trainer block-->
+            
+
+
+            
+
+            {% endblock %}
+            {% block footerBtn %}
+                        <div class="col-md-3 col-sm-6 col-xs-12 width-50 width-set-50">
+                            <div class="footer-details">
+                                <h4>explore</h4>
+                                <ul class="list-unstyled footer-links">
+                                    <li class="active"><a>Home</a></li>
+                                    <li><a href="/category">Category</a></li>
+                                    <li><a href="/shop">Shop</a></li>
+                                    <li><a href="/about">About</a></li>
+                                    <li> <a href="/contact">Contact</a></li>
+                                    <!-- <li> <a href="/search">Search</a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        {% endblock %}

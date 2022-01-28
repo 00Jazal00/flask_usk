@@ -1,0 +1,81 @@
+{% extends "dashboard/dashboard-layout.html" %}
+{% block title %} Dashboard - Home{% endblock %}
+{% block mainBtn %} 
+                <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard-home">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard-shop-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Shop</span></a>
+            </li>
+            <!-- Nav Item - Posts -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/dashboard-posts">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Posts</span></a>
+            </li> -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/dashboard-category">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Category</span></a>
+            </li>
+            {% endblock %}
+{% block body %}
+              
+<div class="container-fluid">
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Complete Categories</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    {% if all_category|length == 0 %}
+
+                            <div class="alert alert-dark" role="alert">
+                                No Category Added !
+                            </div>
+                            {% else %}
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Sub Category 1</th>
+                                    <th>Sub Category 2</th>
+                                    <th>Sub Category 3</th>
+                                    <th>Sub Category 4</th>
+                                    <th>Sub Category 5</th>
+                                    <th>Edit</th>
+                                    <th>Del</th>
+                                </tr>
+                            </thead>
+                            {% for category in all_category %}
+                    <tbody>
+                        <tr>
+                            <td>{{category.c}}</td>
+                            <td>{{category.c1}}</td>
+                            <td>{{category.c2}}</td>
+                            <td>{{category.c3}}</td>
+                            <td>{{category.c4}}</td>
+                            <td>{{category.c5}}</td>
+                            <td><a href="/dashboard-category-edit/{{category.sno}}"><i class="fas fa-edit"></i></a></td>
+                            <td><a href="/delete-category/{{category.sno}}"><i class="fas fa-trash-alt"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                            {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+                
+    {% endblock %}

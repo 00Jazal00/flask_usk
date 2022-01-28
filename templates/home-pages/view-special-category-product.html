@@ -1,0 +1,486 @@
+{% extends "home-pages/home-layout.html" %}
+{% block title %} Category - Filter Product - Best Shopping Website {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='fonts/antonio-exotic/stylesheet.css')}}" rel="stylesheet">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    .fa {
+        color: #a10c1e;
+    }
+
+    .top-header {
+        height: 40px;
+    }
+
+    body {
+        background-color: #f4f4f4
+    }
+
+    .container {
+        margin: 40px auto
+    }
+
+
+
+    .col-lg-4,
+    .col-md-6 {
+        padding-right: 0
+    }
+
+    button.btn.btn-hide {
+        height: inherit;
+        background-color: #ff935d;
+        color: #fff;
+        font-size: 0.82rem;
+        padding-left: 40px;
+        padding-right: 40px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px
+    }
+
+    .btn:focus {
+        box-shadow: none
+    }
+
+    .box-label .btn {
+        background-color: #fff;
+        padding: 0;
+        font-size: 0.8rem
+    }
+
+    .btn-red {
+        background-color: #e00000ce
+    }
+
+    .btn-orange {
+        background-color: #ffa500
+    }
+
+    .btn-pink {
+        background-color: #e0009dce
+    }
+
+    .btn-green {
+        background-color: #00811c
+    }
+
+    .btn-blue {
+        background-color: #026bc2
+    }
+
+    .btn-brown {
+        background-color: #994a00
+    }
+
+    .navbar {
+        display: inline-flex
+    }
+
+    .pagination .page-item .page-link {
+        color: #333;
+        border: none;
+        width: 40px;
+        text-align: center
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #fff;
+        border: 1px solid #333
+    }
+
+
+
+    .card {
+        padding: 10px;
+        cursor: pointer;
+        transition: .3s all ease-in-out;
+        height: 350px
+    }
+
+    .card:hover {
+        box-shadow: 2px 2px 15px #fd9a6ce5;
+        transform: scale(1.02)
+    }
+
+    .card .product-name {
+        font-weight: 600
+    }
+
+    .card-body {
+        padding-bottom: 0
+    }
+
+    .card .text-muted {
+        font-size: 0.82rem
+    }
+
+    .card-img img {
+        padding-top: 10px;
+        width: inherit;
+        height: 180px;
+        object-fit: contain;
+        display: block
+    }
+
+    .card-body .btn-group .btn {
+        padding: 0;
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        border-radius: 50%;
+        position: relative
+    }
+
+    .card-body .btn-group>.btn-group:not(:last-child)>.btn,
+    .card-body .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+        border-radius: 50%;
+        transition: ease-in all .4s
+    }
+
+    .card-body input[type="radio"] {
+        visibility: hidden
+    }
+
+    .card-body .btn:not(:disabled):not(.disabled).active::after,
+    .card-body .btn:not(:disabled):not(.disabled):active::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        top: 4px;
+        left: 4.2px;
+        background-color: #fff;
+        position: absolute;
+        transition: ease-in all .4s
+    }
+
+    .card-body .btn.btn-light:not(:disabled):not(.disabled).active::after,
+    .card-body .btn.btn-light:not(:disabled):not(.disabled):active::after {
+        background-color: #000
+    }
+
+    #avail-size input[type="checkbox"] {
+        visibility: hidden
+    }
+
+    #avail-size input[type='checkbox']:checked {
+        background-color: #16c79a;
+        border: none
+    }
+
+    #avail-size .btn.btn-success {
+        background-color: #ddd;
+        color: #333;
+        border: none;
+        width: 20px;
+        font-size: 0.7rem;
+        border-radius: 0;
+        padding: 0
+    }
+
+    #avail-size .btn.btn-success:hover {
+        background-color: #aff1e1;
+        color: #444
+    }
+
+    #avail-size .btn-success:not(:disabled):not(.disabled).active,
+    #avail-size .btn-success:not(:disabled):not(.disabled):active {
+        background-color: #16c79a;
+        color: #fff
+    }
+
+    #avail-size label {
+        margin: 10px;
+        margin-left: 0px
+    }
+
+    #shirt {
+        height: 170px
+    }
+
+    .middle {
+        position: relative;
+        width: 100%;
+        margin-top: 25px
+    }
+
+    .slider {
+        position: relative;
+        z-index: 1;
+        height: 5px;
+        margin: 0 15px
+    }
+
+    .slider>.track {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 5px;
+        background-color: #ddd
+    }
+
+    .slider>.range {
+        position: absolute;
+        z-index: 2;
+        left: 25%;
+        right: 25%;
+        top: 0;
+        bottom: 0;
+        border-radius: 5px;
+        background-color: #36a31b
+    }
+
+    .slider>.thumb {
+        position: absolute;
+        top: 2px;
+        z-index: 3;
+        width: 20px;
+        height: 20px;
+        background-color: #36a31b;
+        border-radius: 50%;
+        box-shadow: 0 0 0 0 rgba(63, 204, 75, 0.705);
+        transition: box-shadow .3s ease-in-out
+    }
+
+    .slider>.thumb::after {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        left: 28%;
+        top: 30%;
+        border-radius: 50%;
+        content: '';
+        background-color: #fff
+    }
+
+    .slider>.thumb.left {
+        left: 25%;
+        transform: translate(-15px, -10px)
+    }
+
+    .slider>.thumb.right {
+        right: 25%;
+        transform: translate(15px, -10px)
+    }
+
+    .slider>.thumb.hover {
+        box-shadow: 0 0 0 10px rgba(125, 230, 134, 0.507)
+    }
+
+    .slider>.thumb.active {
+        box-shadow: 0 0 0 10px rgba(63, 204, 75, 0.623)
+    }
+
+    input[type=range] {
+        position: absolute;
+        pointer-events: none;
+        -webkit-appearance: none;
+        z-index: 2;
+        height: 10px;
+        width: 100%;
+        opacity: 0
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        pointer-events: all;
+        width: 30px;
+        height: 30px;
+        border-radius: 0;
+        border: 0 none;
+        background-color: red;
+        -webkit-appearance: none
+    }
+
+    .del {
+        text-decoration: line-through;
+        color: red
+    }
+
+    @media(min-width:1199.6px) {
+        #filterbar {
+            width: 25%
+        }
+    }
+
+    @media(max-width:1199.5px) {
+        #filterbar {
+            width: 28%
+        }
+
+        .card {
+            margin: 5px;
+            height: 350px;
+            width: 300px;
+        }
+
+        .price {
+            padding-top: 20px;
+            font-size: 17px;
+            font-weight: bolder;
+            color: #ff4157;
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 17px;
+            color: #ff4157;
+        }
+    }
+
+    @media(max-width: 991.5px) {
+        .navbar-nav {
+            min-width: 290px;
+            position: absolute;
+            left: -168px;
+            bottom: -146px;
+            padding: 20px 10px;
+            display: block;
+            background-image: none;
+            z-index: 2;
+            background-color: #1d1c1cb2
+        }
+
+        #filterbar {
+            width: 36%
+        }
+
+        #sort {
+            background-color: inherit;
+            color: #fff;
+            margin: 0;
+            margin-bottom: 20px;
+            width: 100%
+        }
+
+        #sort option,
+        #pro option {
+            color: #000
+        }
+
+        #pro,
+        #select2,
+        .result {
+            background-color: inherit;
+            color: #fff
+        }
+
+        .card {
+            height: 345px
+        }
+
+        .price {
+            font-size: 0.85rem
+        }
+    }
+
+    @media(max-width: 767.5px) {
+        #filterbar {
+            width: 50%
+        }
+    }
+
+    @media(max-width: 525.5px) {
+        #filterbar {
+            float: none;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 5px
+        }
+
+        #content.my-5 {
+            margin-top: 20px !important;
+            margin-bottom: 20px !important
+        }
+
+        .col-lg-4,
+        .col-md-6 {
+            padding-left: 0
+        }
+    }
+
+    @media(max-width: 500.5px) {
+        .pagination {
+            display: none
+        }
+    }
+</style>
+{% endblock %}
+
+{% block cls %}
+<div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
+    <ul class="list-unstyled nav1 cl-effect-10">
+        <li><a data-hover="Home" href="/"><span>Home</span></a></li>
+        <li><a data-hover="Category" class="active" href="/category"><span>Category</span></a></li>
+        <li><a data-hover="Shop" href="/shop"><span>Shop</span></a></li>
+        <li><a data-hover="About" href="/about"><span>About</span></a></li>
+        <li><a data-hover="Contact Us" href="/contact"><span>contact Us</span></a></li>
+        <!-- <li><a data-hover="Search" href="/search"><span>Search <i class="fa fa-search"
+                        aria-hidden="true"></i></span></a></li> -->
+    </ul>
+
+</div>
+{% endblock %}
+{% block body %}
+<div class="container">
+
+    <div id="content" class="my-5">
+        <div id="products">
+            <div class="row mx-0">
+                {% if shopping_card|length == 0 %}
+
+                <div class="alert alert-dark" role="alert">
+                    No Product is Avaible in this Category, Please check Other!
+                </div>
+                {% else %}
+                {% for shop_card in shopping_card %}
+                {% if shop_card.category == special_category.name %}
+                <div class="col-lg-4 col-md-6 " style="margin-top: 20px;">
+                    <div class="card d-flex flex-column align-items-center">
+                        <div class="product-name">{{shop_card.name}} / {{shop_card.category}}</div>
+                        <div class="card-img">
+                            {% set fname = 'uploads/' + shop_card.img1 %}
+                            <img src="{{url_for('static', filename=fname)}}" alt="">
+                        </div>
+                        <div class="card-body pt-5">
+                            <div class="text-muted text-center mt-auto" style="font-size: 15px;"><a href="/payment-method-shipping/{{shop_card.sno}}">Avaible For
+                                    Sale <i class="fa fa-shopping-cart"></i></a></div>
+
+                            <div class="d-flex align-items-center price">
+                                <div class="font-weight-bold">{{shop_card.price}} $</div>
+                            </div><br>
+                            <div class="">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block footerBtn %}
+<div class="col-md-3 col-sm-6 col-xs-12 width-50 width-set-50">
+    <div class="footer-details">
+        <h4>explore</h4>
+        <ul class="list-unstyled footer-links">
+            <li><a>Home</a></li>
+            <li class="active"><a href="/category">Category</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/about">About</a></li>
+            <li> <a href="/contact">Contact</a></li>
+            <!-- <li> <a href="/search">Search</a></li> -->
+        </ul>
+    </div>
+</div>
+{% endblock %}

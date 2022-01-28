@@ -1,0 +1,112 @@
+{% extends "dashboard/dashboard-layout.html" %}
+{% block title %} Dashboard - Home{% endblock %}
+{% block mainBtn %} 
+                <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard-home">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard-shop-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Shop</span></a>
+            </li>
+            <!-- Nav Item - Posts -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/dashboard-posts">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Posts</span></a>
+            </li> -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/dashboard-category">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Category</span></a>
+            </li>
+            {% endblock %}
+{% block body %}
+              
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Category</h1>
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-home fa-sm text-white-50"></i> Ironign</a>
+                    </div>
+
+                   <!-- pasted Here -->
+                   <div class="limiter">
+                    <div class="container-login100" style="background-image: url_for('static', filename='dashboard/form/images/bg-01.jpg');">
+                        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                            <form class="login100-form validate-form" enctype="multipart/form-data" action = "/dashboard-special-category-edit/{{all_special_category.sno}}" method="post">
+                                <span class="login100-form-title p-b-49">
+                                    Edit Special Category
+                                </span>
+                                <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+                                    <span class="label-input100">Name</span>
+                                    <input class="input100" type="text" name="name" placeholder="Category" required value="{{all_special_category.name}}">
+                                    <span class="focus-input100"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+                                    <span class="label-input100">Description</span>
+                                    <textarea rows="10" cols="10" class="input100" placeholder="Write some lines about category" type="text" name="desc" placeholder="Sub category 1" required>{{all_special_category.desc}}</textarea>
+                                    <span class="focus-input100"></span>
+                                </div>
+    
+                                <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+                                    <span class="label-input100">Image</span>
+                                    <input type="file" class="input100" name="img" id="" value="{{all_special_category.img}}">
+                                    <p>{{all_special_category.img}}</p>
+                                    <span class="focus-input100"></span>
+                                </div>
+                                
+            
+                                
+                                
+                                <br>
+                                <div class="container-login100-form-btn">
+                                    <div class="wrap-login100-form-btn">
+                                        <div class="login100-form-bgbtn"></div>
+                                        <button class="login100-form-btn" type="submit">
+                                            Update Special Category
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="flex-col-c p-t-60">
+                                    <a href="/dashboard-special-category-view" class="txt2">
+                                       View Special Categories
+                                    </a>
+                                </div>
+            
+            
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    
+    {% endblock %}

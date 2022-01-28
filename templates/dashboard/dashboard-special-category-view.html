@@ -1,0 +1,75 @@
+{% extends "dashboard/dashboard-layout.html" %}
+{% block title %} Dashboard - Home{% endblock %}
+{% block mainBtn %} 
+                <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard-home">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard-shop-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Shop</span></a>
+            </li>
+            <!-- Nav Item - Posts -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/dashboard-posts">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Posts</span></a>
+            </li> -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/dashboard-category">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Category</span></a>
+            </li>
+            {% endblock %}
+{% block body %}
+              
+<div class="container-fluid">
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Complete Speical Categories</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    {% if all_special_category|length == 0 %}
+
+                            <div class="alert alert-dark" role="alert">
+                                No Special Category Added !
+                            </div>
+                            {% else %}
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Images</th>
+                                    <th>Edit</th>
+                                    <th>Del</th>
+                                </tr>
+                            </thead>
+                            {% for category in all_special_category %}
+                    <tbody>
+                        <tr>
+                            <td>{{category.name}}</td>
+                            <td>{{category.desc}}</td>
+                            <td>{{category.img}}</td>
+                            <td><a href="/dashboard-special-category-edit/{{category.sno}}"><i class="fas fa-edit"></i></a></td>
+                            <td><a href="/delete-special-category/{{category.sno}}"><i class="fas fa-trash-alt"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                            {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+                
+    {% endblock %}

@@ -1,0 +1,112 @@
+{% extends "home-pages/home-layout.html" %}
+{% block title %} Search - Best Shopping Website {% endblock %}
+{% block cls %} 
+<div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
+    <ul class="list-unstyled nav1 cl-effect-10">
+        <li><a  data-hover="Home" href="/"><span>Home</span></a></li>
+        <li><a data-hover="Category" href="/category"><span>Category</span></a></li>
+        <li><a data-hover="Shop"  href="/shop"><span>Shop</span></a></li>
+        <li><a data-hover="About" href="/about"><span>About</span></a></li>
+        <li><a data-hover="Contact Us" href="/contact"><span>contact Us</span></a></li>
+        <!-- <li><a data-hover="Search" class="active" href="/search"><span>Search <i class="fa fa-search" aria-hidden="true"></i></span></a></li> -->
+    </ul>
+
+</div>
+{% endblock %}
+{% block body %}
+    
+    {% block css %}
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
+    <link href="{{url_for('static', filename='search/css/search-product.css')}}" rel="stylesheet" />
+    <link href="{{url_for('static', filename='search/css/main.css')}}" rel="stylesheet" />
+  {% endblock %}
+
+  <div class="s008">
+    <form>
+      <div class="inner-form">
+        <div class="basic-search">
+          <div class="input-field">
+            <input id="search" type="text" placeholder="Type Keywords" />
+            <div class="icon-wrap">
+              <a href=""><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+                <path d="M18.869 19.162l-5.943-6.484c1.339-1.401 2.075-3.233 2.075-5.178 0-2.003-0.78-3.887-2.197-5.303s-3.3-2.197-5.303-2.197-3.887 0.78-5.303 2.197-2.197 3.3-2.197 5.303 0.78 3.887 2.197 5.303 3.3 2.197 5.303 2.197c1.726 0 3.362-0.579 4.688-1.645l5.943 6.483c0.099 0.108 0.233 0.162 0.369 0.162 0.121 0 0.242-0.043 0.338-0.131 0.204-0.187 0.217-0.503 0.031-0.706zM1 7.5c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5-6.5-2.916-6.5-6.5z"></path>
+              </svg></a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- paste here -->
+
+
+
+
+        <div class="row">
+          <div class="col-md-3 box-product">
+            <div class="product-wrapper mb-45 text-center">
+                <div class="product-img"> <a href="#" data-abc="true"> <img src="{{url_for('static', filename='search/images/product.png')}}" alt=""> </a>
+                    <div class="product-action">
+                        <div class="product-action-style"> <a class="action-plus" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist" href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i class="fa fa-shopping-cart"></i> </a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+    <script src="js/extention/choices.js"></script>
+    <script>
+      const customSelects = document.querySelectorAll("select");
+      const deleteBtn = document.getElementById('delete')
+      const choices = new Choices('select',
+      {
+        searchEnabled: false,
+        removeItemButton: true,
+        itemSelectText: '',
+      });
+      for (let i = 0; i < customSelects.length; i++)
+      {
+        customSelects[i].addEventListener('addItem', function(event)
+        {
+          if (event.detail.value)
+          {
+            let parent = this.parentNode.parentNode
+            parent.classList.add('valid')
+            parent.classList.remove('invalid')
+          }
+          else
+          {
+            let parent = this.parentNode.parentNode
+            parent.classList.add('invalid')
+            parent.classList.remove('valid')
+          }
+        }, false);
+      }
+      deleteBtn.addEventListener("click", function(e)
+      {
+        e.preventDefault()
+        const deleteAll = document.querySelectorAll('.choices__button')
+        for (let i = 0; i < deleteAll.length; i++)
+        {
+          deleteAll[i].click();
+        }
+      });
+
+    </script>
+{% endblock %}
+{% block footerBtn %}
+            <div class="col-md-3 col-sm-6 col-xs-12 width-50 width-set-50">
+                <div class="footer-details">
+                    <h4>explore</h4>
+                    <ul class="list-unstyled footer-links">
+                        <li><a>Home</a></li>
+                        <li><a href="/category">Category</a></li>
+                        <li><a href="/shop">Shop</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li> <a href="/contact">Contact</a></li>
+                        <!-- <li class="active"> <a href="/search">Search</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            {% endblock %}

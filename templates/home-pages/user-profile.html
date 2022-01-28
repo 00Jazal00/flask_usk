@@ -1,0 +1,456 @@
+{% extends "home-pages/home-layout.html" %}
+{% block title %} Category - Best Shopping Website {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif
+    }
+    .fa{
+        color: white;
+    }
+    
+    .wrapper {
+        min-width: 100vw;
+        min-height: 100vh;
+        display: flex;
+        padding: 50px
+    }
+
+    .wrapper .card {
+        width: 100%;
+        min-height: 500px;
+        background: #222;
+        box-shadow: 5px 5px 10px #1f1f1f50, -5px -5px 10px #1f1f1f50;
+        border: none;
+        overflow: hidden
+    }
+
+    .wrapper .card .bg-pink {
+        width: 100%;
+        height: 100px;
+        background-color: #F50057;
+        animation: img-top 0.8s linear
+    }
+
+    .wrapper .card .img-container {
+        width: 100%;
+        animation: img-top 0.8s linear
+    }
+
+    .wrapper .card .img-container img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        z-index: 5;
+        border: 8px solid #222;
+        margin-top: calc((100px/2)*-1)
+    }
+
+    @keyframes img-top {
+        0% {
+            transform: translateY(-100px);
+            opacity: 0
+        }
+
+        50% {
+            opacity: 0.5
+        }
+
+        100% {
+            opacity: 1
+        }
+    }
+
+    .wrapper .card a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 25px;
+    }
+
+    .wrapper .card a:hover {
+        color: #f1f1f1
+    }
+
+    .wrapper .card .btn {
+        font-size: 0.82rem;
+        color: #fff;
+        border-radius: 15px
+    }
+
+    .wrapper .card .btn:hover,
+    .wrapper .card .btn.following {
+        background-color: #F50057
+    }
+
+    .wrapper .card .btn.following:hover {
+        background-color: #f50056c0
+    }
+
+    .wrapper .card .head {
+        font-size: 0.8rem;
+        color: #F50057;
+        font-weight: 600
+    }
+
+    .wrapper .card .fs-08 {
+        font-size: 0.8rem
+    }
+
+    .wrapper .card .progress {
+        height: 0.5rem;
+        border-radius: 0px;
+        background: inherit
+    }
+
+    .wrapper .card .progress .progress-bar {
+        background-color: #F50057
+    }
+
+    .wrapper .card .p-html {
+        width: 95%
+    }
+
+    .wrapper .card .p-css {
+        width: 90%
+    }
+
+    .wrapper .card .p-js {
+        width: 75%
+    }
+
+    .wrapper .card .fab {
+        font-size: 1rem;
+        color: #F50057
+    }
+
+    .wrapper .card .user {
+        animation: op 1.5s ease-in
+    }
+
+    @keyframes op {
+        0% {
+            opacity: 0
+        }
+
+        100% {
+            opacity: 1
+        }
+    }
+
+    .wrapper .card .details.snippets,
+    .wrapper .card .details.project,
+    .wrapper .card .details.post {
+        transform: translateX(-500px);
+        animation: fadeIn 1.5s;
+        animation-fill-mode: forwards
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateX(-500px)
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0px)
+        }
+    }
+
+    .wrapper .card .details:nth-of-type(2) {
+        animation-delay: 0.5s
+    }
+
+    .wrapper .card .details:nth-of-type(1) {
+        animation-delay: 1s
+    }
+
+    .wrapper .card .skills {
+        animation: moveTop 1.6s ease-in;
+        overflow: hidden
+    }
+
+    @keyframes moveTop {
+        0% {
+            transform: translateY(400px)
+        }
+
+        100% {
+            transform: translateY(0px)
+        }
+    }
+
+    .wrapper .card .p-html,
+    .wrapper .card .html {
+        animation: level 1s;
+        animation-delay: 0.5s
+    }
+
+    .wrapper .card .p-css,
+    .wrapper .card .css {
+        animation: level 2s;
+        animation-delay: 0.5s
+    }
+
+    .wrapper .card .p-js,
+    .wrapper .card .js {
+        animation: level 2.5s;
+        animation-delay: 0.5s
+    }
+
+    @keyframes level {
+        0% {
+            transform: translateX(-500px);
+            opacity: 0
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0px)
+        }
+    }
+
+
+    /* second time */
+
+
+
+
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+
+.container-fluid {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.40rem
+}
+
+.img-sm {
+    width: 80px;
+    height: 80px
+}
+
+.itemside .info {
+    padding-left: 15px;
+    padding-right: 7px
+}
+
+.table-shopping-cart .price-wrap {
+    line-height: 1.2
+}
+
+.table-shopping-cart .price {
+    font-weight: bold;
+    margin-right: 5px;
+    display: block
+}
+
+.text-muted {
+    color: #969696 !important
+}
+
+a {
+    text-decoration: none !important
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0px
+}
+
+.itemside {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%
+}
+
+.dlist-align {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+}
+
+[class*="dlist-"] {
+    margin-bottom: 5px
+}
+
+.coupon {
+    border-radius: 1px
+}
+
+.price {
+    font-weight: 600;
+    color: #212529;
+    font-size: 25px;
+}
+
+.btn.btn-out {
+    outline: 1px solid #fff;
+    outline-offset: -5px
+}
+
+.btn-main {
+    border-radius: 2px;
+    text-transform: capitalize;
+    font-size: 25px;
+    padding: 10px 19px;
+    cursor: pointer;
+    color: #fff;
+    width: 100%
+}
+
+.btn-light {
+    color: #ffffff;
+    background-color: #F44336;
+    border-color: #f8f9fa;
+    font-size: 22px
+}
+
+.btn-light:hover {
+    color: #ffffff;
+    background-color: #F44336;
+    border-color: #F44336
+}
+
+.btn-apply {
+    font-size: 21px
+}
+</style>
+
+{% endblock %}
+
+{% block cls %}
+
+<div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
+    <ul class="list-unstyled nav1 cl-effect-10">
+        <li><a data-hover="Home" href="/"><span>Home</span></a></li>
+        <li><a data-hover="Category" href="/category"><span>Category</span></a></li>
+        <li><a data-hover="Shop" href="/shop"><span>Shop</span></a></li>
+        <li><a data-hover="About" href="/about"><span>About</span></a></li>
+        <li><a data-hover="Contact Us" href="/contact"><span>contact Us</span></a></li>
+        <!-- <li><a data-hover="Search" href="/search"><span>Search <i class="fa fa-search"
+                        aria-hidden="true"></i></span></a></li> -->
+    </ul>
+
+</div>
+{% endblock %}
+{% block body %}
+
+    <div class="wrapper">
+        <div class="card text-white" style="border: none;">
+            <div class="bg-pink"></div>
+            <div class="img-container d-flex align-items-center justify-content-center border-0"> <img
+                    src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    alt="" class="rounded-circle"> </div>
+            <div class="user">
+                <div class="h5 text-center m-0"> <a href="https://bbbootstrap.com/users/anand-vunnam-78681"
+                        target="_blank">Anand Vunnam</a> </div>
+            </div>
+            <div class="px-3">
+                
+                <div class="skills">
+                    <div class=" head text-uppercase" style="font-size: 23px; margin-top: 10px;">Shopping Card Details <span class="fa fa-cart-arrow-down" style="color: #F50057;"></span></div>
+                    <div class=" pb-3 pt-2">
+                        <!-- code here -->
+                        <div class="container-fluid">
+                            <div class="row">
+                                <aside class="col-lg-9">
+                                    <div class="card">
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless table-shopping-cart" style="border: none;">
+                                                <thead class="text-muted">
+                                                    <tr class="small text-uppercase" style="color: #F50057;">
+                                                        <th scope="col">Product</th>
+                                                        <th scope="col" width="120">Price</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <figure class="itemside align-items-center">
+                                                                <div class="aside"><img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fnymag.com%2Fstrategist%2Farticle%2Fbest-comfortable-shoes-for-walking-and-standing-reviews.html&psig=AOvVaw0duwbNx7TL_CAGuxrU2OfS&ust=1641735809341000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPiHvNekovUCFQAAAAAdAAAAABAD" class="img-sm"></div>
+                                                                <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true"><p style="color: white;">
+                                                                    Here is the titile </p></a>
+                                                                    <p class="text-muted small" style="font-size: 13px;">ddescription</p>
+                                                                </figcaption>
+                                                            </figure>
+                                                        </td>
+                                                        <td>
+                                                            <div class="price-wrap"> <var class="price" style="color: #F50057;">$10.00</var></div>
+                                                        </td>
+                                                        <td class="text-right d-md-block">
+                                                            <a href=""><button type="button"
+                                                                class="book-now-btn" style="margin: 10px;"><i class="fa fa-shopping-cart"></i></button></a><a href=""><button type="button"
+                                                                class="book-now-btn"><i class="fa fa-trash"></i></button></a>
+                                                            </td>
+                                                    </tr> 
+                                                   
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </aside>
+                               
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+{% block footerBtn %}
+<div class="col-md-3 col-sm-6 col-xs-12 width-50 width-set-50">
+    <div class="footer-details">
+        <h4>explore</h4>
+        <ul class="list-unstyled footer-links">
+            <li><a>Home</a></li>
+            <li><a href="/category">Category</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/about">About</a></li>
+            <li> <a href="/contact">Contact</a></li>
+            <!-- <li> <a href="/search">Search</a></li> -->
+        </ul>
+    </div>
+</div>
+{% endblock %}

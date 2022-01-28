@@ -1,0 +1,65 @@
+{% extends "home-pages/home-layout.html" %}
+{% block title %} About - Best Shopping Website {% endblock %}
+{% block cls %} 
+<div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
+    <ul class="list-unstyled nav1 cl-effect-10">
+        <li><a  data-hover="Home" href="/"><span>Home</span></a></li>
+        <li><a data-hover="Category" href="/category"><span>Category</span></a></li>
+        <li><a data-hover="Shop"  href="/shop"><span>Shop</span></a></li>
+        <li><a data-hover="About" class="active" href="/About"><span>About</span></a></li>
+        <li><a data-hover="Contact Us" href="/contact"><span>contact Us</span></a></li>
+        <!-- <li><a data-hover="Search" href="/search" ><span>Search <i class="fa fa-search" aria-hidden="true"></i></span></a></li> -->
+    </ul>
+
+</div>
+{% endblock %}
+{% block body %}
+
+            <!--end-->
+            <section class="image-head-wrapper" style="background-image: url_for('static', filename='images/banner3.jpg');">
+                <div class="inner-wrapper">
+                    <h1>About us</h1>
+                </div>
+            </section>
+            <div class="clearfix"></div>
+
+
+            <section class="about-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 about-left">
+                            <p>Lorem <label>ipsum</label> dol  <span>-sitamet</span></p>
+                        </div>
+                        <div class="col-md-7 about-right">
+                            <h3>Lorem ipsum dolor sit amet, consec</h3>
+                            <p>Donec bibendum massa metus, vel aliquet nunc varius eu. Curabitur nec scelerisque dui. Quisque mattis libero et enim ultricies gravida. Nulla ut commodo massa, eget tincidunt ligula. Vivamus eu ante tincidunt, fermentum risus nec, pharetra turpis. Donec rhoncus eros sed felis aliquet tincidunt. In consectetur tempor quam</p>
+                            <ul class="list-unstyled list-inline">
+                                <li>Sed vitae facilisis nisi, in finibus lacus. Duis vel nulla orci.</li>
+                                <li>fringilla, at ultrices felis dignissim. Integer ultricies posuere odio</li>
+                                <li>Sed vestibulum mattis laoreet. Donec sollicitudin justo luctus nulla consectetur</li>
+                                <li>Nam dolor tellus, dictum sit amet libero eu, semper placerat massa.</li>
+                                <li>consectetur tempor quam, aliquam dignissim diam hendrerit nec. Cras sodales at nisl</li>
+                            </ul>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </section>
+
+            {% endblock %}
+            {% block footerBtn %}
+                        <div class="col-md-3 col-sm-6 col-xs-12 width-50 width-set-50">
+                            <div class="footer-details">
+                                <h4>explore</h4>
+                                <ul class="list-unstyled footer-links">
+                                    <li><a>Home</a></li>
+                                    <li><a href="/category">Category</a></li>
+                                    <li><a href="/shop">Shop</a></li>
+                                    <li class="active"><a href="/about">About</a></li>
+                                    <li> <a href="/contact">Contact</a></li>
+                                    <!-- <li> <a href="/search">Search</a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        {% endblock %}

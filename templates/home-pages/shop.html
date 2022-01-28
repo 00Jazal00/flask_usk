@@ -1,0 +1,215 @@
+{% extends "home-pages/home-layout.html" %}
+{% block title %} Shop - Best Shopping Website {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="{{url_for('static', filename='css/style.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='fonts/antonio-exotic/stylesheet.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{url_for('static', filename='css/shop-cart.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/filter.css')}}">
+
+
+
+{% endblock %}
+
+{% block cls %}
+<div class="collapse navigation navbar-collapse navbar-ex1-collapse remove-space">
+    <ul class="list-unstyled nav1 cl-effect-10">
+        <li><a data-hover="Home" href="/"><span>Home</span></a></li>
+        <li><a data-hover="Category" href="/category"><span>Category</span></a></li>
+        <li><a data-hover="Shop" class="active" href="/shop"><span>Shop</span></a></li>
+        <li><a data-hover="About" href="/about"><span>About</span></a></li>
+        <li><a data-hover="Contact Us" href="/contact"><span>contact Us</span></a></li>
+        <!-- <li><a data-hover="Search" href="/search"><span>Search <i class="fa fa-search"
+                        aria-hidden="true"></i></span></a></li> -->
+    </ul>
+
+</div>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <!-- pasted here -->
+    <div class="filter">
+        <form enctype="multipart/form-data" action="/shop" method="post">
+            <h1>Filter</h1>
+            <select name="price" id="">
+                <option value="0" selected disabled hidden>Price</option>
+                <option value="50">0 to 50 £</option>
+                <option value="100">50 to 100 £</option>
+                <option value="150">100 to 150 £</option>
+                <option value="200">150 to 200 £</option>
+                <option value="up">Up to 200 £</option>
+
+
+            </select>
+            <br>
+            <a href="" class="filterBtn">
+                <button type="submit" onclick="changeMe()" style="border: none; margin-top: 10px;"> Add filter to
+                    Products</button></a><span style="font-size: 12px;" id='change'>
+            </span>
+        </form>
+    </div>
+    
+
+
+
+
+    <div class="container">
+        <div class="row">
+            {% for shop_card in shopping_card %}
+           
+            
+            {% if price == '0' or price == "" %}
+                {% if shop_card.price >=  0 %}
+                <div class="col-lg-4 col-md-6 " style="margin-top: 20px;">
+                    <div class="card d-flex flex-column align-items-center">
+                        <div class="product-name">{{shop_card.name}} / {{shop_card.category}}</div>
+                        <div class="card-img">
+                            {% set fname = 'uploads/' + shop_card.img1 %}
+                            <img src="{{url_for('static', filename=fname)}}" alt="">
+                        </div>
+                        <div class="card-body pt-5">
+                            <div class="text-muted text-center mt-auto" style="font-size: 15px;"><a href="/payment-method-shipping/{{shop_card.sno}}">Avaible For
+                                    Sale <i class="fa fa-shopping-cart"></i></a></div>
+    
+                            <div class="d-flex align-items-center price">
+                                <div class="font-weight-bold">{{shop_card.price}} $</div>
+                            </div><br>
+                            <div class="">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %} 
+            {% elif price == '50' %}
+            {% if 50 >  shop_card.price %}
+                <div class="col-lg-4 col-md-6 " style="margin-top: 20px;">
+                    <div class="card d-flex flex-column align-items-center">
+                        <div class="product-name">{{shop_card.name}} / {{shop_card.category}}</div>
+                        <div class="card-img">
+                            {% set fname = 'uploads/' + shop_card.img1 %}
+                            <img src="{{url_for('static', filename=fname)}}" alt="">
+                        </div>
+                        <div class="card-body pt-5">
+                            <div class="text-muted text-center mt-auto" style="font-size: 15px;"><a href="/payment-method-shipping/{{shop_card.sno}}">Avaible For
+                                    Sale <i class="fa fa-shopping-cart"></i></a></div>
+    
+                            <div class="d-flex align-items-center price">
+                                <div class="font-weight-bold">{{shop_card.price}} $</div>
+                            </div><br>
+                            <div class="">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %} 
+            {% elif price == '100' %}
+            {% if shop_card.price >=  50 and 100 > shop_card.price %}
+            <div class="col-lg-4 col-md-6 " style="margin-top: 20px;">
+                <div class="card d-flex flex-column align-items-center">
+                    <div class="product-name">{{shop_card.name}} / {{shop_card.category}}</div>
+                    <div class="card-img">
+                        {% set fname = 'uploads/' + shop_card.img1 %}
+                        <img src="{{url_for('static', filename=fname)}}" alt="">
+                    </div>
+                    <div class="card-body pt-5">
+                        <div class="text-muted text-center mt-auto" style="font-size: 15px;"><a href="/payment-method-shipping/{{shop_card.sno}}">Avaible For
+                                Sale <i class="fa fa-shopping-cart"></i></a></div>
+
+                        <div class="d-flex align-items-center price">
+                            <div class="font-weight-bold">{{shop_card.price}} $</div>
+                        </div><br>
+                        <div class="">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+            </div>
+            {% endif %} 
+            {% elif price == '150' %}
+            {% if shop_card.price >=  100 and 150 > shop_card.price %}
+            <div class="col-lg-4 col-md-6 " style="margin-top: 20px;">
+                <div class="card d-flex flex-column align-items-center">
+                    <div class="product-name">{{shop_card.name}} / {{shop_card.category}}</div>
+                    <div class="card-img">
+                        {% set fname = 'uploads/' + shop_card.img1 %}
+                        <img src="{{url_for('static', filename=fname)}}" alt="">
+                    </div>
+                    <div class="card-body pt-5">
+                        <div class="text-muted text-center mt-auto" style="font-size: 15px;"><a href="/payment-method-shipping/{{shop_card.sno}}">Avaible For
+                                Sale <i class="fa fa-shopping-cart"></i></a></div>
+
+                        <div class="d-flex align-items-center price">
+                            <div class="font-weight-bold">{{shop_card.price}} $</div>
+                        </div><br>
+                        <div class="">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+            </div>
+            {% endif %} 
+            {% elif price == '200' %}
+            {% if shop_card.price >=  150 and 200 > shop_card.price %}
+                <div class="col-lg-4 col-md-6 " style="margin-top: 20px;">
+                    <div class="card d-flex flex-column align-items-center">
+                        <div class="product-name">{{shop_card.name}} / {{shop_card.category}}</div>
+                        <div class="card-img">
+                            {% set fname = 'uploads/' + shop_card.img1 %}
+                            <img src="{{url_for('static', filename=fname)}}" alt="">
+                        </div>
+                        <div class="card-body pt-5">
+                            <div class="text-muted text-center mt-auto" style="font-size: 15px;"><a href="/payment-method-shipping/{{shop_card.sno}}">Avaible For
+                                    Sale <i class="fa fa-shopping-cart"></i></a></div>
+    
+                            <div class="d-flex align-items-center price">
+                                <div class="font-weight-bold">{{shop_card.price}} $</div>
+                            </div><br>
+                            <div class="">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %} 
+
+                {% elif price == 'up' %}
+            {% if shop_card.price >  200 %}
+                <div class="col-lg-4 col-md-6 " style="margin-top: 20px;">
+                    <div class="card d-flex flex-column align-items-center">
+                        <div class="product-name">{{shop_card.name}} / {{shop_card.category}}</div>
+                        <div class="card-img">
+                            {% set fname = 'uploads/' + shop_card.img1 %}
+                            <img src="{{url_for('static', filename=fname)}}" alt="">
+                        </div>
+                        <div class="card-body pt-5">
+                            <div class="text-muted text-center mt-auto" style="font-size: 15px;"><a href="/payment-method-shipping/{{shop_card.sno}}">Avaible For
+                                    Sale <i class="fa fa-shopping-cart"></i></a></div>
+    
+                            <div class="d-flex align-items-center price">
+                                <div class="font-weight-bold">{{shop_card.price}} $</div>
+                            </div><br>
+                            <div class="">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %} 
+
+
+             {% endif %} 
+             {% endfor %} 
+        </div>
+
+
+    </div>
+</div>
+
+    {% endblock %}
+    {% block footerBtn %}
+    <div class="col-md-3 col-sm-6 col-xs-12 width-50 width-set-50">
+        <div class="footer-details">
+            <h4>explore</h4>
+            <ul class="list-unstyled footer-links">
+                <li><a>Home</a></li>
+                <li><a href="/category">Category</a></li>
+                <li class="active"><a href="/shop">Shop</a></li>
+                <li><a href="/about">About</a></li>
+                <li> <a href="/contact">Contact</a></li>
+                <!-- <li> <a href="/search">Search</a></li> -->
+            </ul>
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,87 @@
+{% extends "dashboard/dashboard-layout.html" %}
+{% block title %} Dashboard - Home{% endblock %}
+{% block mainBtn %} 
+                <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard-home">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/dashboard-shop-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Shop</span></a>
+            </li>
+            <!-- Nav Item - Posts -->
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="/dashboard-posts">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Posts</span></a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard-category">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Category</span></a>
+            </li>
+            {% endblock %}
+{% block body %}
+              
+<div class="container-fluid">
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Complete Shop card</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    {% if all_shopping_card|length == 0 %}
+
+                            <div class="alert alert-dark" role="alert">
+                                No Shopping Cards Added !
+                            </div>
+                            {% else %}
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Reviews</th>
+                                    <th>Price</th>
+                                    <th>Images 1</th>
+                                    <th>Images 2</th>
+                                    <th>Images 3</th>
+                                    <th>Category</th>
+                                    <th>Sub-Category</th>
+                                    <th>Edit</th>
+                                    <th>Del</th>
+                                </tr>
+                            </thead>
+                            {% for shop_card in all_shopping_card %}
+                    <tbody>
+                        <tr>
+                            <td>{{shop_card.name}}</td>
+                            <td>{{shop_card.desc}}</td>
+                            <td>{{shop_card.reviews}}</td>
+                            <td>{{shop_card.price}}</td>
+                            <td>{{shop_card.img1}}</td>
+                            <td>{{shop_card.img2}}</td>
+                            <td>{{shop_card.img3}}</td>
+                            <td>{{shop_card.category}}</td>
+                            <td>{{shop_card.sub_category}}</td>
+                            <td><a href="/dashboard-shop-card-edit/{{shop_card.sno}}"><i class="fas fa-edit"></i></a></td>
+                            <td><a href="/delete-shop-card/{{shop_card.sno}}"><i class="fas fa-trash-alt"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                            {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+                
+    {% endblock %}
